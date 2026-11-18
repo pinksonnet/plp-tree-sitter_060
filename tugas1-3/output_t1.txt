@@ -1,0 +1,62 @@
+﻿Potongan: assignment
+x = 1
+
+(module (expression_statement (assignment left: (identifier) right: (integer))))
+Anak dari expression_statement
+   assignment bernama
+
+Potongan: fungsi
+def tambah(a, b):
+    return a + b
+
+(module (function_definition name: (identifier) parameters: (parameters (identifier) (identifier)) body: (block (return_statement (binary_operator left: (identifier) right: (identifier))))))
+Anak dari function_definition
+   def anonim
+   identifier bernama
+   parameters bernama
+   : anonim
+   block bernama
+
+Potongan: if_else
+if x > 0:
+    print("positif")
+else:
+    print("non positif")
+
+(module (if_statement condition: (comparison_operator (identifier) (integer)) consequence: (block (expression_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end)))))) alternative: (else_clause body: (block (expression_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end)))))))))
+Anak dari if_statement
+   if anonim
+   comparison_operator bernama
+   : anonim
+   block bernama
+   else_clause bernama
+
+Potongan: kelas
+class Mahasiswa:
+    def sapa(self):
+        return "Halo"
+
+(module (class_definition name: (identifier) body: (block (function_definition name: (identifier) parameters: (parameters (identifier)) body: (block (return_statement (string (string_start) (string_content) (string_end))))))))
+Anak dari class_definition
+   class anonim
+   identifier bernama
+   : anonim
+   block bernama
+
+Anak dari parameters
+   ( anonim
+   identifier bernama
+   , anonim
+   identifier bernama
+   ) anonim
+
+children vs named_children dari function_definition
+children: ['def', 'identifier', 'parameters', ':', 'block']
+named_children: ['identifier', 'parameters', 'block']
+jumlah children: 5
+jumlah named_children: 3
+
+Anak dari else_clause
+   else anonim
+   : anonim
+   block bernama

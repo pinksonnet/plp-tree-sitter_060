@@ -1,0 +1,6 @@
+﻿Potongan: tanpa_titik_dua
+(module (ERROR (identifier) (parameters (identifier)) (identifier)))
+
+Potongan: tanpa_kurung_tutup
+(module (ERROR (identifier) (identifier)) (return_statement (identifier)))
+

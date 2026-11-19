@@ -1,0 +1,25 @@
+==================
+satu perbandingan dengan string
+==================
+
+status = "open"
+
+---
+
+(query
+  (comparison
+    (identifier)
+    (string)))
+
+==================
+operator lebih besar sama dengan dan angka
+==================
+
+priority >= 2
+
+---
+
+(query
+  (comparison
+    (identifier)
+    (number)))

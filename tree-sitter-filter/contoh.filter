@@ -1,1 +1,1 @@
-status = "open"
+not archived = true and (status = "open" or priority >= 2)

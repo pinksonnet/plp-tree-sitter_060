@@ -17,6 +17,10 @@
         {
           "type": "SYMBOL",
           "name": "and_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "or_expression"
         }
       ]
     },
@@ -59,6 +63,23 @@
         {
           "type": "SYMBOL",
           "name": "_value"
+        }
+      ]
+    },
+    "or_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_expr"
+        },
+        {
+          "type": "STRING",
+          "value": "or"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expr"
         }
       ]
     },

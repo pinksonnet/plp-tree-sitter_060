@@ -1,0 +1,42 @@
+def proses(data):
+    hasil = []
+    hasil.append(data + 1)
+    hasil.append(data + 2)
+    hasil.append(data + 3)
+    hasil.append(data + 4)
+    hasil.append(data + 5)
+    hasil.append(data + 6)
+    hasil.append(data + 7)
+    hasil.append(data + 8)
+    hasil.append(data + 9)
+    hasil.append(data + 10)
+    hasil.append(data + 11)
+    hasil.append(data + 12)
+    hasil.append(data + 13)
+    hasil.append(data + 14)
+    hasil.append(data + 15)
+    hasil.append(data + 16)
+    hasil.append(data + 17)
+    hasil.append(data + 18)
+    hasil.append(data + 19)
+    hasil.append(data + 20)
+    hasil.append(data + 21)
+    hasil.append(data + 22)
+    hasil.append(data + 23)
+    hasil.append(data + 24)
+    hasil.append(data + 25)
+    hasil.append(data + 26)
+    hasil.append(data + 27)
+    hasil.append(data + 28)
+    hasil.append(data + 29)
+    hasil.append(data + 30)
+    hasil.append(data + 31)
+    hasil.append(data + 32)
+    hasil.append(data + 33)
+    hasil.append(data + 34)
+    hasil.append(data + 35)
+    return hasil
+
+
+def pendek(x):
+    return x + 1

@@ -18,8 +18,7 @@ export default grammar({
       $._value,
     ),
 
-    or_expression: $ => seq($._expr, 'or', $._expr),
-
+    or_expression: $ => prec.left(1, seq($._expr, 'or', $._expr)),
     and_expression: $ => prec.left(2, seq($._expr, 'and', $._expr)),
 
     _value: $ => choice($.string, $.number),

@@ -8,6 +8,9 @@ parser = Parser(PY)
 
 Q_TODO = Query(PY, '((comment) @c (#match? @c "TODO|FIXME"))')
 
+Q_FUNGSI = Query(PY, "(function_definition name: (identifier) @nama) @fungsi")
+
+BATAS_BARIS = 30
 
 def cek_file(path):
     tree = parser.parse(path.read_bytes())
@@ -17,6 +20,13 @@ def cek_file(path):
         teks = node.text.decode(errors="replace").strip()
         print(f"{path}:{node.start_point[0] + 1}: {teks}")
 
+    # Fitur 2: fungsi yang lebih dari 30 baris
+    for _, cap in QueryCursor(Q_FUNGSI).matches(tree.root_node):
+        fungsi = cap["fungsi"][0]
+        nama = cap["nama"][0].text.decode(errors="replace")
+        jumlah = fungsi.end_point[0] - fungsi.start_point[0] + 1
+        if jumlah > BATAS_BARIS:
+            print(f"{path}:{fungsi.start_point[0] + 1}: fungsi {nama} {jumlah} baris")
 
 for path in sorted(Path(sys.argv[1]).rglob("*.py")):
     cek_file(path)

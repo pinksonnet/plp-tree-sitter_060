@@ -1,0 +1,6 @@
+﻿@fn  baris 11: print
+@fn  baris 23: print
+@fn  baris 25: print
+@args  baris 11: ("Halo", nama)
+@args  baris 25: (Hitung().kali(2, 3))
+@args  baris 23: (tambah(1, 2))

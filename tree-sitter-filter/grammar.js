@@ -8,6 +8,7 @@ export default grammar({
 
     _expr: $ => choice(
       $.comparison,
+      $.in_expression,
       $.and_expression,
       $.or_expression,
       $.not_expression,
@@ -16,8 +17,17 @@ export default grammar({
 
     comparison: $ => seq(
       field('field', $.identifier),
-      field('operator', choice('=', '!=', '>', '<', '>=', '<=')),
+      field('operator', choice('=', '!=', '>', '<', '>=', '<=', 'contains')),
       field('value', $._value),
+    ),
+
+    in_expression: $ => seq(
+      field('field', $.identifier),
+      'in',
+      '(',
+      field('value', $._value),
+      repeat(seq(',', field('value', $._value))),
+      ')',
     ),
 
     or_expression: $ => prec.left(1, seq(field('left', $._expr), 'or', field('right', $._expr))),

@@ -62,7 +62,7 @@ Pada tema bawaan, `@number` dan `@constant.builtin` berwarna sama sehingga `true
 
 `cek.py <folder>` memiliki tiga fitur: komentar `TODO`/`FIXME` (query dengan `#match?`), fungsi lebih dari 30 baris (`matches` dengan selisih `end_point` dan `start_point`), dan file dengan error sintaks (`has_error` dengan fungsi rekursif untuk baris pertama yang bermasalah). Pada folder `uji/` ketiga fitur melaporkan hasil yang diharapkan.
 
-Diuji pada repositori `pallets/itsdangerous` (commit `672971d`). Hasilnya 1 komentar TODO (`timed.py:182`), 6 fungsi lebih dari 30 baris, dan tidak ada file dengan error sintaks. Pengecekan manual pada dua file: [ISI hasil cek manual `timed.py` dan `signer.py`, misalnya "`unsign` di baris 72 berakhir di baris 158 sehingga 87 baris, sama dengan laporan alat"].
+Diuji pada repositori `pallets/itsdangerous` (commit `672971d`). Hasilnya 1 komentar TODO (`timed.py:182`), 6 fungsi lebih dari 30 baris, dan tidak ada file dengan error sintaks. Pengecekan manual pada dua file: `timed.py` hanya memiliki satu komentar TODO (baris 182). Fungsi `unsign` mulai di baris 72 dan berakhir di baris 158 (87 baris), `loads` baris 185 sampai 220 (36 baris). Pada `signer.py`, `__init__` baris 129 sampai 173 (45 baris) dan `derive_key` baris 182 sampai 213 (32 baris). Semuanya sama dengan laporan `cek.py`.
 
 ![Output cek.py](gambar/t6.png)
 
@@ -74,7 +74,7 @@ Diuji pada repositori `pallets/itsdangerous` (commit `672971d`). Hasilnya 1 kome
 | Node.js tidak ada di Windows, tree-sitter CLI butuh Node dan compiler C | Memakai WSL Ubuntu: `apt install build-essential nodejs npm`, lalu `npm install -g tree-sitter-cli` |
 | `git status` di WSL menampilkan banyak file lama sebagai `modified` | Git hanya dijalankan dari PowerShell, `tree-sitter` dari Ubuntu |
 | `tree-sitter generate` gagal: `module is not defined in ES module scope` | `package.json` hasil `tree-sitter init` berisi `"type": "module"`, jadi baris pertama `grammar.js` diubah ke `export default grammar({` |
-| `Unresolved conflict` pada `or_expression` | `prec.left` dan tingkat prioritas (lihat Tugas 4) |
+| `Unresolved conflict` pada `or_expression` | `prec.left` dan tingkat prioritas (Tugas 4) |
 | `true` dan angka berwarna sama pada highlight | Mengubah tema `constant.builtin` di konfigurasi CLI (Tugas 5) |
 
 ## Catatan penggunaan AI
@@ -84,6 +84,6 @@ Tugas dikerjakan dengan bantuan AI (Claude) sebagai pemandu langkah. Pembagian p
 - **Tugas 1.** Diminta: kerangka `t1.py` dan `t1_rusak.py` serta penilaian perkiraan pohon. Kekurangan: perintah awal bergaya Linux (`source .venv/bin/activate`, `tee`) padahal saya memakai Windows PowerShell. Bukti: aktivasi venv ditolak dengan pesan execution policy; saya menggantinya dengan `Activate.ps1`, `Set-ExecutionPolicy`, dan `Out-File -Encoding utf8`.
 - **Tugas 2.** Diminta: isi fungsi `jelajah()` dan file contoh 120 baris. Tidak ditemukan kesalahan. Saya memverifikasinya dengan membandingkan output dengan Playground.
 - **Tugas 3.** Diminta: tiga query dan file uji. Kekurangan: urutan hasil yang ditulis AI untuk `nama_fungsi.scm` (baris 6, 14, 19, 10) berbeda dari hasil di laptop saya (baris 6, 10, 14, 19). Bukti: output `q.py`. Saya memeriksa isi dan jumlah hasil, bukan urutannya.
-- **Tugas 4.** Diminta: grammar tiap langkah dan kasus uji. Dua kesalahan: (1) grammar memakai `module.exports` sehingga gagal pada proyek hasil `tree-sitter init` (bukti: pesan `ReferenceError: module is not defined in ES module scope`, saya perbaiki dengan `export default`); (2) AI menyatakan kasus uji lama harus diperbarui setelah label field ditambahkan, padahal tes tanpa label tetap lulus. Bukti: [ISI hasil percobaan `coba.txt` dengan `tree-sitter test`].
+- **Tugas 4.** Diminta: grammar tiap langkah dan kasus uji. Dua kesalahan: (1) grammar memakai `module.exports` sehingga gagal pada proyek hasil `tree-sitter init` (bukti: pesan `ReferenceError: module is not defined in ES module scope`, saya perbaiki dengan `export default`); (2) AI menyatakan kasus uji lama harus diperbarui setelah label field ditambahkan, padahal tes tanpa label tetap lulus. Bukti: tes `coba tanpa label` (hasil yang diharapkan tanpa label field) tetap lulus pada `tree-sitter test`, dengan 9 dari 9 tes berhasil.
 - **Tugas 5.** Diminta: isi `highlights.scm` dan konfigurasi CLI. Tidak ditemukan kesalahan pada kode yang diberikan. Saya memverifikasinya dengan `tree-sitter highlight` dan menemukan sendiri bahwa `true` dan angka berwarna sama pada tema bawaan.
 - **Tugas 6.** Diminta: `cek.py`, file uji, dan README. Tidak ditemukan kesalahan pada kode yang diberikan. Saya memverifikasinya dengan pengecekan manual pada dua file dari repositori `itsdangerous`.
